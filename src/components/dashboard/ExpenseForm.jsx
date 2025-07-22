@@ -7,7 +7,6 @@ const ExpenseForm = ({ onClose, expenseToEdit = null }) => {
     title: expenseToEdit?.title || '',
     amount: expenseToEdit?.amount || '',
     category: expenseToEdit?.category || 'Other',
-    customCategory: '',
     description: expenseToEdit?.description || '',
     date: expenseToEdit?.date ? expenseToEdit.date.split('T')[0] : new Date().toISOString().split('T')[0],
   });
@@ -39,18 +38,9 @@ const ExpenseForm = ({ onClose, expenseToEdit = null }) => {
       return;
     }
 
-    const finalCategory = formData.category === 'Other' && formData.customCategory.trim() 
-      ? formData.customCategory.trim() 
-      : formData.category;
-
-    const submitData = {
-      ...formData,
-      category: finalCategory,
-    };
-
     const result = expenseToEdit
-      ? await updateExpense(expenseToEdit._id, submitData)
-      : await addExpense(submitData);
+      ? await updateExpense(expenseToEdit._id, formData)
+      : await addExpense(formData);
 
     if (result.success) {
       onClose();
@@ -110,21 +100,6 @@ const ExpenseForm = ({ onClose, expenseToEdit = null }) => {
             ))}
           </select>
         </div>
-
-        {formData.category === 'Other' && (
-          <div className="form-group">
-            <label htmlFor="customCategory">Custom Category</label>
-            <input
-              type="text"
-              id="customCategory"
-              name="customCategory"
-              value={formData.customCategory}
-              onChange={handleChange}
-              placeholder="Enter custom category name"
-              required
-            />
-          </div>
-        )}
 
         <div className="form-group">
           <label htmlFor="date">Date</label>
