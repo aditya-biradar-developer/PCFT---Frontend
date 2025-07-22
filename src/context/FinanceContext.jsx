@@ -40,7 +40,7 @@ export const FinanceProvider = ({ children }) => {
 
   const fetchIncomes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/income');
+      const response = await axios.get('https://pcft-backend-mnwq.onrender.com/api/income');
       setIncomes(response.data);
     } catch (error) {
       console.error('Error fetching incomes:', error);
@@ -49,7 +49,7 @@ export const FinanceProvider = ({ children }) => {
 
   const fetchExpenses = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/expenses');
+      const response = await axios.get('https://pcft-backend-mnwq.onrender.com/api/expenses');
       setExpenses(response.data);
     } catch (error) {
       console.error('Error fetching expenses:', error);
@@ -58,7 +58,7 @@ export const FinanceProvider = ({ children }) => {
 
   const fetchGoals = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/goals');
+      const response = await axios.get('https://pcft-backend-mnwq.onrender.com/api/goals');
       setGoals(response.data);
     } catch (error) {
       console.error('Error fetching goals:', error);
@@ -67,7 +67,7 @@ export const FinanceProvider = ({ children }) => {
 
   const fetchCommunityGoals = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/community');
+      const response = await axios.get('https://pcft-backend-mnwq.onrender.com/api/community');
       setCommunityGoals(response.data);
     } catch (error) {
       console.error('Error fetching community goals:', error);
@@ -76,7 +76,7 @@ export const FinanceProvider = ({ children }) => {
 
   const addIncome = async (incomeData) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/income', incomeData);
+      const response = await axios.post('https://pcft-backend-mnwq.onrender.com/api/income', incomeData);
       setIncomes([response.data, ...incomes]);
       await updateUserBalance();
       return { success: true };
@@ -90,7 +90,7 @@ export const FinanceProvider = ({ children }) => {
 
   const addExpense = async (expenseData) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/expenses', expenseData);
+      const response = await axios.post('https://pcft-backend-mnwq.onrender.com/api/expenses', expenseData);
       setExpenses([response.data, ...expenses]);
       await updateUserBalance();
       return { success: true };
@@ -104,7 +104,7 @@ export const FinanceProvider = ({ children }) => {
 
   const addGoal = async (goalData) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/goals', goalData);
+      const response = await axios.post('https://pcft-backend-mnwq.onrender.com/api/goals', goalData);
       setGoals([response.data, ...goals]);
       return { success: true };
     } catch (error) {
@@ -117,7 +117,7 @@ export const FinanceProvider = ({ children }) => {
 
   const contributeToGoal = async (goalId, amount) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/goals/${goalId}/contribute`, { amount });
+      const response = await axios.post(`https://pcft-backend-mnwq.onrender.com/api/goals/${goalId}/contribute`, { amount });
       await fetchGoals();
       await fetchExpenses();
       await updateUserBalance();
@@ -132,7 +132,7 @@ export const FinanceProvider = ({ children }) => {
 
   const contributeToCommunityGoal = async (goalId, amount) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/community/${goalId}/contribute`, { amount });
+      const response = await axios.post(`https://pcft-backend-mnwq.onrender.com/api/community/${goalId}/contribute`, { amount });
       await fetchCommunityGoals();
       await fetchExpenses();
       await updateUserBalance();
@@ -147,7 +147,7 @@ export const FinanceProvider = ({ children }) => {
 
   const createCommunityGoal = async (goalData) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/community', goalData);
+      const response = await axios.post('https://pcft-backend-mnwq.onrender.com/api/community', goalData);
       setCommunityGoals([response.data, ...communityGoals]);
       return { success: true };
     } catch (error) {
@@ -160,7 +160,7 @@ export const FinanceProvider = ({ children }) => {
 
   const updateIncome = async (id, incomeData) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/income/${id}`, incomeData);
+      const response = await axios.put(`https://pcft-backend-mnwq.onrender.com/api/income/${id}`, incomeData);
       setIncomes(incomes.map(income => income._id === id ? response.data : income));
       await updateUserBalance();
       return { success: true };
@@ -174,7 +174,7 @@ export const FinanceProvider = ({ children }) => {
 
   const updateExpense = async (id, expenseData) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/expenses/${id}`, expenseData);
+      const response = await axios.put(`https://pcft-backend-mnwq.onrender.com/api/expenses/${id}`, expenseData);
       setExpenses(expenses.map(expense => expense._id === id ? response.data : expense));
       await updateUserBalance();
       return { success: true };
@@ -188,7 +188,7 @@ export const FinanceProvider = ({ children }) => {
 
   const deleteIncome = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/income/${id}`);
+      await axios.delete(`https://pcft-backend-mnwq.onrender.com/api/income/${id}`);
       setIncomes(incomes.filter(income => income._id !== id));
       await updateUserBalance();
       return { success: true };
@@ -202,7 +202,7 @@ export const FinanceProvider = ({ children }) => {
 
   const deleteExpense = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+      await axios.delete(`https://pcft-backend-mnwq.onrender.com/api/expenses/${id}`);
       setExpenses(expenses.filter(expense => expense._id !== id));
       await updateUserBalance();
       return { success: true };
@@ -216,7 +216,7 @@ export const FinanceProvider = ({ children }) => {
 
   const deleteGoal = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/goals/${id}`);
+      await axios.delete(`https://pcft-backend-mnwq.onrender.com/api/goals/${id}`);
       setGoals(goals.filter(goal => goal._id !== id));
       return { success: true };
     } catch (error) {
