@@ -4,7 +4,7 @@ import BalanceCard from '../components/dashboard/BalanceCard';
 import DailySuggestion from '../components/dashboard/DailySuggestion';
 import QuickActions from '../components/dashboard/QuickActions';
 import GoalCard from '../components/goals/GoalCard';
-import CommunityGoalCard from '../components/community/CommunityGoalCard';
+// import CommunityGoalCard from '../components/community/CommunityGoalCard';
 import Timer from '../components/dashboard/Timer';
 import { useFinance } from '../context/FinanceContext';
 import './Dashboard.css';
@@ -59,7 +59,7 @@ const Dashboard = () => {
               )}
             </div>
 
-            <div className="recent-community-goals">
+            {/* <div className="recent-community-goals">
               <h3>Community Goals</h3>
               {recentCommunityGoals.length > 0 ? (
                 <div className="goals-list">
@@ -72,7 +72,7 @@ const Dashboard = () => {
                   <p>No community goals yet. Join or create one!</p>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
