@@ -7,7 +7,6 @@ const GoalForm = ({ onClose, goalToEdit = null }) => {
     title: goalToEdit?.title || '',
     targetAmount: goalToEdit?.targetAmount || '',
     category: goalToEdit?.category || 'Other',
-    customCategory: '',
     description: goalToEdit?.description || '',
     targetDate: goalToEdit?.targetDate ? goalToEdit.targetDate.split('T')[0] : '',
   });
@@ -39,18 +38,9 @@ const GoalForm = ({ onClose, goalToEdit = null }) => {
       return;
     }
 
-    const finalCategory = formData.category === 'Other' && formData.customCategory.trim() 
-      ? formData.customCategory.trim() 
-      : formData.category;
-
-    const submitData = {
-      ...formData,
-      category: finalCategory,
-    };
-
     const result = goalToEdit
-      ? await updateGoal(goalToEdit._id, submitData)
-      : await addGoal(submitData);
+      ? await updateGoal(goalToEdit._id, formData)
+      : await addGoal(formData);
 
     if (result.success) {
       onClose();
@@ -110,21 +100,6 @@ const GoalForm = ({ onClose, goalToEdit = null }) => {
             ))}
           </select>
         </div>
-
-        {formData.category === 'Other' && (
-          <div className="form-group">
-            <label htmlFor="customCategory">Custom Category</label>
-            <input
-              type="text"
-              id="customCategory"
-              name="customCategory"
-              value={formData.customCategory}
-              onChange={handleChange}
-              placeholder="Enter custom category name"
-              required
-            />
-          </div>
-        )}
 
         <div className="form-group">
           <label htmlFor="targetDate">Target Date (Optional)</label>
