@@ -1,0 +1,54 @@
+.daily-suggestion {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.suggestion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.suggestion-header h3 {
+  margin: 0;
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.refresh-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background: #e2e8f0;
+  transform: rotate(90deg);
+}
+
+.suggestion-text {
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .daily-suggestion {
+    padding: 1rem;
+  }
+  
+  .suggestion-text {
+    font-size: 0.9rem;
+  }
+}

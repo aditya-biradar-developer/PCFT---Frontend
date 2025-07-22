@@ -1,0 +1,136 @@
+.balance-card {
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: scale(1.5);
+}
+
+.balance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.balance-header h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.balance-icon {
+  font-size: 1.5rem;
+}
+
+.balance-amount {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: block;
+}
+
+.amount.negative {
+  color: #fecaca;
+}
+
+.balance-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .balance-card {
+    padding: 1.5rem;
+  }
+  
+  .amount {
+    font-size: 2rem;
+  }
+  
+  .balance-stats {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .balance-card {
+    padding: 1rem;
+  }
+  
+  .amount {
+    font-size: 1.75rem;
+  }
+  
+  .balance-stats {
+    gap: 0.75rem;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .balance-card {
+    padding: 0.75rem;
+  }
+  
+  .amount {
+    font-size: 1.5rem;
+  }
+  
+  .balance-header h3 {
+    font-size: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 0.9rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,55 @@
+.community-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.community-goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.goal-wrapper {
+  position: relative;
+}
+
+.invite-btn {
+  width: 100%;
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0 0 12px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-top: -1px;
+}
+
+.invite-btn:hover {
+  background: #e5e7eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-help {
+  color: #666666;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .community-stats {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .community-goals-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
